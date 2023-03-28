@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+TokenDrop - это смарт-контракт на блокчейне BNB testnet, который позволяет распределять токены ERC20 по списку адресов BNB testnet. Это может быть полезно для различных целей, таких как айрдроп, раздача токенов или поощрительные программы.
 
-## Getting Started
+## Для начала:
 
-First, run the development server:
+Запустите сервер разработки с помощью комманд:
 
 ```bash
 npm run dev
@@ -12,15 +12,22 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [http://localhost:3000](http://localhost:3000) с помощью браузера, чтобы увидеть результат.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+![image](https://user-images.githubusercontent.com/66798677/228096730-f68ac301-de11-4789-a24a-919305866909.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Для того чтобы воспользоваться verifyLeaf, вам достаточно ввести в первое поле адрес и во второе пруфы которые доказывают принадлежность адреса к MerkleTree, соотвественно к айрдропу (токендропу). Таким образом при верном вводе данных и подтверждением принадлежности всплывёт данное окно:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![image](https://user-images.githubusercontent.com/66798677/228097066-1bdc9253-3da5-4645-a9a9-05ec26a06520.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Визуально подверждающее вашу принадлежность к айрдропу.
+
+Адреса используются заранее установленные для данного айрдропа, также в самом коде смарт-контракта в комментариях указаны входные данные для теста
+![image](https://user-images.githubusercontent.com/66798677/228097259-a93d8fd5-d944-4c3b-848d-fc5dffde7e7b.png)
+
+Также в случае неверных данных, или отсуствием вашей принадлежности к айрдропу выходит данный визуальный элемент в виде notification.
+![image](https://user-images.githubusercontent.com/66798677/228097454-b3b56daf-211c-4606-9220-729d352fbd2b.png)
+
 
 ## Learn More
 
