@@ -2,6 +2,15 @@ TokenDrop - это смарт-контракт на блокчейне BNB testn
 
 ## Для начала:
 
+Склонируйте проект:
+```bash
+git clone https://github.com/Arthas-Menethil-599/tokendrop.git
+cd tokendrop
+```
+В случае отсутствия:
+```bash
+npm install
+```
 Запустите сервер разработки с помощью комманд:
 
 ```bash
