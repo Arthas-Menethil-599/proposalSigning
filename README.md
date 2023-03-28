@@ -81,16 +81,55 @@ _proof: массив значений, содержащий доказатель
 
 Также имеются такие же визуальные элементы подверждающие успешную отправку токенов или неуспешную.
 
+## Rainbowkit
+
+Также реализована возможность подключать разные кошельки с помощью библиотеки Rainbowkit:
+
+![image](https://user-images.githubusercontent.com/66798677/228099587-96125644-691e-4b38-a104-96852ea38e8a.png)
+
+![image](https://user-images.githubusercontent.com/66798677/228099711-ea585d5e-f322-4aed-a462-27414902dea9.png)
 
 
-## Learn More
+## Фронт
 
-To learn more about Next.js, take a look at the following resources:
+Фронт реализован используя next.js + typescript
+В стиле "Неоморфизм"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![image](https://user-images.githubusercontent.com/66798677/228099807-fa22ee33-451e-4238-9b02-ba0917f2dae4.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Для реализации взаимодействия фронта со смарт-контрактом нам необходимы address, abi контракта:
+![image](https://user-images.githubusercontent.com/66798677/228100123-ef4a80f6-af63-48bb-886a-2be05f3a3adc.png)
+
+Также нам нужен signer и contract:
+
+signer - объект Signer из библиотеки ethers.js. Signer используется для подписывания транзакций, отправки запросов на выполнение методов контракта и взаимодействия с блокчейном.
+
+contract - объект Contract из библиотеки ethers.js. Contract используется для взаимодействия с контрактом. Он хранит адрес контракта, его ABI и обработчик транзакций (в данном случае, объект signer).
+
+Ну и конечно provider:
+const provider = new ethers.providers.Web3Provider((window as any).ethereum)
+ - создание объекта Web3Provider из библиотеки ethers.js. Web3Provider используется для взаимодействия с сетью через провайдера Web3, который доступен в окне браузера.
+
+Данная функция необходима для notification в случае успеха и нет:
+![image](https://user-images.githubusercontent.com/66798677/228100591-3e3875ec-e017-4266-aa86-4e30b920af1a.png)
+
+A функция **encodePackedKeccak256** принимает строковое входное значение и возвращает строковый вывод, который представляет хэш-значение входной строки с использованием алгоритма keccak256:
+![image](https://user-images.githubusercontent.com/66798677/228101298-dd36e856-367f-4bc3-80ef-5f84288e493b.png)
+
+Функция **parseHexArray** для того чтобы распарсить proofs которые передаются как JSON объект:
+![image](https://user-images.githubusercontent.com/66798677/228101357-258e1e79-fac3-46da-a2d8-92783b389c87.png)
+
+Функция **claimIn** достающая value из поля ввода и используя функцию из смарт-контракта, передающая параметр после того как распарсится в массив строк (с обработкой ошибок и дальнейшей передачей в notification для визуального уведомления пользователя):
+![image](https://user-images.githubusercontent.com/66798677/228101460-b077d34e-1f5f-4afc-8043-459aeb887404.png)
+
+Функция **verifyLeafIn** достающая адрес и доказательства, адрес переводится в хэш-значение с использованием алгоритма keccak256, а пруфы парсятся в массив строк и передаются в контракт, также происходит обработка ошибок и передача в notification:
+![image](https://user-images.githubusercontent.com/66798677/228101769-b26dd7db-0e7b-45a8-8372-e34c5614b96b.png)
+
+
+**Logo**
+![image](https://user-images.githubusercontent.com/66798677/228102008-22400081-0cb9-4d17-8236-a1d86c0bb787.png)
+
+Также в проекте была зайдействована библиотека AntDesign
 
 ## Deploy on Vercel
 
